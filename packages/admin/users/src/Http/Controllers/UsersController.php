@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
 
 use App\User;
+use App\Notifications\UserRegistered as UserRegistered;
 
 class UsersController extends Controller
 {
@@ -106,4 +107,20 @@ class UsersController extends Controller
     {
         //
     }
+
+
+    // Tests shit out. Go figure.
+    public function test()
+    {
+        // mimic user registration notification
+        $newUser = User::create([
+            'email' => 'johndoe@email.com',
+            'name' => 'John Doe',
+            'password' => \Hash::make('secret'),
+        ]);
+
+        $admin = User::findOrFail(11); // tmp admin
+        $admin->notify(new UserRegistered($newUser));
+    }
+
 }

@@ -14,7 +14,7 @@ class AddFileIdColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('file_id')->unsigned();
+            $table->integer('file_id')->unsigned()->nullable();
         });
     }
 

@@ -7,18 +7,24 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
+use App\User;
+
 class UserRegistered extends Notification
 {
     use Queueable;
+
+
+    protected $user;
+
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -41,9 +47,9 @@ class UserRegistered extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
+                    ->line('User Registered.')
                     ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('A new user registered via the web application.');
     }
 
     /**
@@ -55,7 +61,8 @@ class UserRegistered extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'name' => $this->user->name,
+            'email' => $this->user->email,
         ];
     }
 }
