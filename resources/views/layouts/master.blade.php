@@ -49,18 +49,18 @@
 
             <ul class="nav">
 
-                @if (url()->current() === url('/'))
+                @if (Route::is('admin.dashboard'))
                 <li class="active">
                 @else
                 <li>
                 @endif
-                    <a href="{{ url('/') }}">
+                    <a href="{{ route('admin.dashboard') }}">
                         <i class="ti-pie-chart"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
 
-                @if (Route::is('admin.users'))
+                @if (Route::is('admin.users.*') || Route::is('admin.users'))
                 <li class="active">
                 @else 
                 <li>
