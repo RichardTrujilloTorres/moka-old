@@ -25,10 +25,10 @@ Route::get('/admin/dashboard', function () {
 
 
 Route::namespace('Admin')->group(function () {
-    Route::prefix('/admin')->group(function () {
-        Route::get('dashboard', function () {
-            return 'TODO: Dashboard';
-        })->name('admin.dashboard');
+    Route::middleware(['web', 'auth'])->group(function() {
+        Route::prefix('/admin')->group(function () {
+            Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
+        });
     });
 });
 
