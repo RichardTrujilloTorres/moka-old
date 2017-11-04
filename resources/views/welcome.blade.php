@@ -83,9 +83,9 @@
                 </div>
 
                 <div class="links">
-                    <a href="">Go to the Panel</a>
+                    <a href="{{ route('admin.dashboard') }}">Go to the Panel</a>
                     <a href="">Documentation</a>
-                    <a href="">GitHub</a>
+                    <a href="{{ env('APP_GITHUB_URL') }}">GitHub</a>
                 </div>
             </div>
         </div>
