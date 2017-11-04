@@ -14,9 +14,9 @@ return [
     'url_prefix' => env('ADMIN_PANEL_URL_PREFIX', '/admin/users'),
 
     'routes' => [
-        'namespace' => 'Admin\Http\Controllers',
-        'prefix' => '/admin/users',
-        'middleware' => '',
+        'prefix' => env('ADMIN_PANEL_URL_PREFIX', '/admin/users'),
+        'middleware' => ['web', 'auth', ], // definition not valid on 5.5
         'as' => 'admin.users',
+        'namespace' => 'Admin\Http\Controllers',
     ],
 ];

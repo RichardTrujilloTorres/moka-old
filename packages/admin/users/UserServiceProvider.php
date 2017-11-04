@@ -15,7 +15,7 @@ class UserServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/users.php' => config_path('users.php'),
-        ], 'users');
+        ], 'config');
 
         $this->loadRoutesFrom(__DIR__.'/routes.php');
 
