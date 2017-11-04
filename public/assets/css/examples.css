@@ -55,7 +55,7 @@
 }
 
 .register-background {
-  background-image: url("../paper_img/landscape.jpg");
+  background-image: url("/assets/img/background/cars.jpeg");
   background-position: center center;
   background-size: cover;
   min-height: 100vh;
@@ -95,7 +95,8 @@
 }
 
 .register-card {
-  background-color: #FF8F5E;
+  /* background-color: #FF8F5E; */
+  background-color: #7A9E9F;
   border-radius: 8px;
   color: #fff;
   max-width: 350px;
@@ -109,7 +110,8 @@
 }
 
 .register-card .title {
-  color: #B33C12;
+  /* color: #B33C12; */
+  color: #000;
   text-align: center;
 }
 

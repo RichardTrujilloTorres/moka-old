@@ -65,7 +65,7 @@
 
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-danger btn-block">
+                                        <button type="submit" class="btn btn-neutral btn-block">
                                             Register
                                         </button>
                                     </div>
@@ -75,7 +75,7 @@
 
                                 <div class="form-group">
                                     <div class="forgot">
-                                        <a href="#" class="btn btn-simple btn-danger">Forgot password?</a>
+                                        <a href="{{ route('password.request') }}" class="btn btn-simple btn-neutral">Forgot password?</a>
                                     </div>
                                 </div>
 

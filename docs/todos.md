@@ -9,3 +9,8 @@
 * []    pagination
 * []    role and permissions (custom package) 
 * []    notifications
+* []    activity monitor
+* []    dashboard view(s)
+
+
+
