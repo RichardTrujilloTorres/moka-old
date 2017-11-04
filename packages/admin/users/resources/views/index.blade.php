@@ -28,9 +28,13 @@ Users
                             <td><a href="mailto:{{ $user->email }}">{{ $user->email }}</a></td>
                             <td>
                                 @if (Auth::user()->isAdmin())
-                                    <a href="{{ route('admin.users.edit', $user->id) }}"><i class="fa fa-edit"></i> Edit</a>
+                                    <a href="{{ route('admin.users.edit', $user->id) }}">
+                                        <i class="fa fa-edit" title="edit"></i>
+                                    </a>
                                 @else
-                                    <a href="{{ route('admin.users.show', $user->id) }}"><i class="fa fa-edit"></i> View</a>
+                                    <a href="{{ route('admin.users.show', $user->id) }}">
+                                        <i class="fa fa-eye" title="view"></i>
+                                    </a>
                                 @endif
                             </td>
                         </tr>
