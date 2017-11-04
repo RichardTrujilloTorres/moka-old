@@ -3,9 +3,23 @@
 
 Administration:
     - users and their accounts
-    - ruole and permissions
+    - roles and permissions
     - resources 
 
 
 
+
+- user status: active, unactive, blocked, etc.
+- social media login & registration
+- captcha
+- logger: ip addresses, log in, registration, etc.
+- group users
+- tagging system
+- tool: email sending (to all contacts, for instance)
+- traffic blocking: ip blocking (it appears to be more appropiate to left it for the
+    system admin &/or monitoring app to be develop later on)
+- payments: set up plans, settings, logs, etc.
+
+
+- search facility (elasticsearch server)
 
