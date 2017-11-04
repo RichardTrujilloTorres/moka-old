@@ -70,10 +70,7 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
-        $profile = Profile::create([
-            'user_id' => $user->id,
-            // default which can be automatically initialized...
-        ]);
+        $user->buildProfile();
 
         return $user;
     }
