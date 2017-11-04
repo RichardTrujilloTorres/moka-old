@@ -18,3 +18,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/admin/dashboard', function () {
+    return 'TODO: Dashboard';
+})->name('admin.dashboard');
+
+
+Route::namespace('Admin')->group(function () {
+    Route::prefix('/admin')->group(function () {
+        Route::get('dashboard', function () {
+            return 'TODO: Dashboard';
+        })->name('admin.dashboard');
+    });
+});
+

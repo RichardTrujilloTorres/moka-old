@@ -62,7 +62,10 @@ class UsersController extends Controller
     {
         $user = $this->users->findOrFail($id);
 
-        dd($user);
+        if (! $user->hasProfile()) {
+            dd('here');
+            $user->profile->build($user);
+        }
 
         return view('users::edit')->with(compact('user'));
     }
@@ -76,6 +79,9 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = $this->users->findOrFail($id);
+        if (! $user->hasProfile()) {
+            $user->profile = $user->buildProfile();
+        }
 
         return view('users::edit')->with(compact('user'));
     }

@@ -39,6 +39,25 @@ class User extends Authenticatable
         return true;
     }
 
+    public function buildProfile()
+    {
+        $profile = Profile::create([
+            'user_id' => $this->id,
+            // default which can be automatically initialized...
+        ]);
+        
+        return $profile;
+    }
+
+    public function hasProfile()
+    {
+        if (! $this->profile) {
+            return false;
+        }
+
+        return true;
+    }
+
     public function profile()
     {
         return $this->hasOne(Profile::class);
