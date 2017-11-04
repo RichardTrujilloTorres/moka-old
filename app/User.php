@@ -86,4 +86,16 @@ class User extends Authenticatable
         return $this->hasMany(File::class);
     }
 
+    /**
+     * Locks user out of the application according to specific settings.
+     * This is not the same as blocking the user.
+     *
+     * @return null
+     */
+    public function lock()
+    {
+        $this->locked = true;
+        $this->save();
+    }
+
 }
