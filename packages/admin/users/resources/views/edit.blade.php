@@ -8,15 +8,50 @@ User Profile
 <div class="row">
 
     <div class="col-lg-4 col-md-5">
+
+
         <div class="card card-user">
             <div class="image">
-                <img src="assets/img/background.jpg" alt="..."/>
+
+
+                <a data-toggle="modal" data-target="#update-background-image-modal">
+                    <img src="/assets/img/background.jpg" alt="..."/>
+                </a>
+
+
+
+
+                {{-- Update background image --}}
+                {{--
+                <a href="{{ route('admin.users.setBackgroundImage', $user->id) }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('update-background-image-form').submit();">
+                        <img src="/assets/img/background.jpg" alt="..."/>
+                </a>
+                <form id="update-background-image-form" action="{{ route('admin.users.setBackgroundImage', $user->id) }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                    {{ method_field('PUT') }}
+                </form>
+                --}}
+
             </div>
             <div class="content">
                 <div class="author">
-                  <img class="avatar border-white" src="{{ $user->profile->avatar_url }}" alt="..."/>
+
+                        {{-- Update profile image --}}
+                        <a href="{{ route('admin.users.setProfileImage', $user->id) }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('update-image-form').submit();">
+                                <img class="avatar border-white" src="{{ $user->profile->avatar_url }}" alt="..."/>
+                        </a>
+                        <form id="update-image-form" action="{{ route('admin.users.setProfileImage', $user->id) }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                            {{ method_field('PUT') }}
+                        </form>
+
+
                   <h4 class="title"><br />
-                     <a href="#"><small>{{ "@" }}{{ $user->profile->username }}</small></a>
+                     <a href=""><small>{{ "@" }}{{ $user->profile->username }}</small></a>
                   </h4>
                 </div>
                 <p class="description text-center">
@@ -25,6 +60,7 @@ User Profile
                 </p>
             </div>
             <hr>
+
             <div class="text-center">
                 <div class="row">
                     <div class="col-md-3 col-md-offset-1">
@@ -123,6 +159,7 @@ User Profile
                     >
 
                     {{ method_field('PUT') }}
+                    {{ csrf_field() }}
 
                     <div class="row">
                         <div class="col-md-5">
