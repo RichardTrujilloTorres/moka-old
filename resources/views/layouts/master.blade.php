@@ -187,6 +187,8 @@
     </div>
 </div>
 
+@include('partials._update_background_image_modal')
+@include('partials._update_profile_image_modal')
 
 </body>
 
