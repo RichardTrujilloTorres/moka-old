@@ -193,6 +193,30 @@ class UsersController extends Controller
         $admin->notify(new UserRegistered($newUser));
     }
 
+
+    /**
+     * Retrieve user's profile image.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getProfileImage(Request $request, $id)
+    {
+        $server = ServerFactory::create([
+            'source' => storage_path(),
+            'cache' => storage_path().'/cache',
+        ]);
+
+        $user = User::findOrFail($id);
+        $resizeParams = [
+            'w' => $request->has('w') ? @$request['w'] : 300,
+            'h' => $request->has('h') ? @$request['h'] : 400,
+        ];
+
+        return $server->outputImage($user->profile->avatar_url, $resizeParams);
+    }
+
+
     /**
      * Update user's background profile image.
      *
@@ -269,10 +293,36 @@ class UsersController extends Controller
      */
     public function setProfileImage(Request $request, $id)
     {
-        dd($request->all());
+        $user = User::findOrFail($id);
+
+        if (! $request->has('profile-image')) {
+            return redirect()->back()->with([
+                'message' =>  'Could not find image.',
+                'status' => 'danger',
+            ]);
+        }
+
+        try {
+            $image = $this->image->make($request->file('profile-image'));
+        } catch (NotReadableException $e) {
+            return redirect()->back()->with([
+                'message' =>  'Unsupported image type or invalid image.',
+                'status' => 'danger',
+            ]);
+        }
+
+
+        // save image
+        $filename = 'profile-'.$user->id.'-'.uniqid().'.jpg';
+        $image->save(storage_path($filename));
+
+        // save profile update
+        $user->profile->avatar_url = $filename;
+        $user->profile->save();
+
+        return redirect()->back()->with([
+            'message' =>  'Profile image updated.',
+            'status' => 'success',
+        ]);
     }
-
-
-
-
 }
