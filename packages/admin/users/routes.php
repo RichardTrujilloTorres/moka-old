@@ -8,6 +8,14 @@ Route::prefix(config('users.routes.prefix'))->group(function () {
             Route::get('/{user}/edit', 'UsersController@edit')->name('admin.users.edit');
             Route::get('/{user}', 'UsersController@show')->name('admin.users.show');
             Route::put('/{user}', 'UsersController@update')->name('admin.users.update');
+            Route::delete('/{user}', 'UsersController@destroy')->name('admin.users.delete');
+
+            // @todo change to PUT
+            Route::get('/{user}/lock', 'UsersController@lock')->name('admin.users.lock');
+            Route::get('/{user}/unlock', 'UsersController@unlock')->name('admin.users.unlock');
+
+            Route::put('/{user}/image', 'UsersController@setProfileImage')->name('admin.users.setProfileImage');
+            Route::put('/{user}/background-image', 'UsersController@setBackgroundImage')->name('admin.users.setBackgroundImage');
         });
     });
 });
