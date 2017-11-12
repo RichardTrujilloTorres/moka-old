@@ -9,8 +9,10 @@ use App\User;
 class Profile extends Model
 {
     protected $fillable = [
-        'user_id', 'first_name', 'last_name', 'avatar_url', 'company', 'address', 'city', 'zip_code', 'about', 
-        'phrase', 
+        'user_id', 'first_name', 'last_name', 
+        'avatar_url', 'company', 'address', 'city', 
+        'zip_code', 'about', 
+        'phrase', 'background_image_url',
     ];
 
 
