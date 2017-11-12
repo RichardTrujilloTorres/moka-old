@@ -53,10 +53,11 @@ User Profile
                             {{ csrf_field() }}
                             {{ method_field('PUT') }}
                         </form>
+                        --}}
 
 
                   <h4 class="title"><br />
-                     <a href=""><small>{{ "@" }}{{ $user->profile->username }}</small></a>
+                     <small>{{ "@" }}{{ $user->profile->username }}</small>
                   </h4>
                 </div>
                 <p class="description text-center">
