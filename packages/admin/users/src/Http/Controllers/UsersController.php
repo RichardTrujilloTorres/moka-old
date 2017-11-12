@@ -235,7 +235,15 @@ class UsersController extends Controller
             ]);
         }
 
-        $image = $this->image->make($request->file('image'))->resize(200, 200);
+        try {
+            $image = $this->image->make($request->file('image'))->resize(200, 200);
+        } catch (NotReadableException $e) {
+            return redirect()->back()->with([
+                'message' =>  'Unsupported image type or invalid image.',
+                'status' => 'danger',
+            ]);
+        }
+
 
         // save image
         $filename = 'profile-'.$user->id.'-'.uniqid().'.jpg';
