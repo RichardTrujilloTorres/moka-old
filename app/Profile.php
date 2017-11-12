@@ -13,6 +13,23 @@ class Profile extends Model
         'phrase', 
     ];
 
+
+    /**
+     * Retrieve background url.
+     *
+     * @return string
+     */
+    public function backgroundImage()
+    {
+        if (! $this->background_image_url) {
+            return '/assets/img/background.jpg';
+        }
+
+        $url = route('admin.users.background-image', $this->user->id);
+
+        return $url;
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
