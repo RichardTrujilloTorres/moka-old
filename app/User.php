@@ -41,6 +41,11 @@ class User extends Authenticatable
 
     // @tmp 
     // @todo replace w/ role and permissions package
+    /**
+     * Is the user a/the admin?
+     *
+     * @return boolean
+     */
     public function isAdmin()
     {
         return true;
@@ -56,6 +61,11 @@ class User extends Authenticatable
         return $profile;
     }
 
+    /**
+     * Verifies than the user possesses a profile.
+     *
+     * @return boolean
+     */
     public function hasProfile()
     {
         if (! $this->profile) {
