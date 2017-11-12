@@ -187,6 +187,31 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function getBackgroundImage(Request $request, $id)
+    {
+        $server = ServerFactory::create([
+            'source' => storage_path(),
+            'cache' => storage_path().'/cache',
+        ]);
+
+        $user = User::findOrFail($id);
+        $resizeParams = [
+            'w' => $request->has('w') ? @$request['w'] : 300,
+            'h' => $request->has('h') ? @$request['h'] : 400,
+        ];
+
+        // dd($server->getImageResponse($user->profile->background_image_url, $resizeParams));
+        return $server->outputImage($user->profile->background_image_url, $resizeParams);
+    }
+
+
+
+    /**
+     * Update user's background profile image.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function setBackgroundImage(Request $request, $id)
     {
         $user = User::findOrFail($id);
