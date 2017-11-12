@@ -13,9 +13,8 @@ User Profile
         <div class="card card-user">
             <div class="image">
 
-
                 <a data-toggle="modal" data-target="#update-background-image-modal">
-                    <img src="/assets/img/background.jpg" alt="..."/>
+                    <img src="{{ $user->profile->backgroundImage() }}" alt="..."/>
                 </a>
 
 
@@ -26,7 +25,7 @@ User Profile
                 <a href="{{ route('admin.users.setBackgroundImage', $user->id) }}"
                     onclick="event.preventDefault();
                     document.getElementById('update-background-image-form').submit();">
-                        <img src="/assets/img/background.jpg" alt="..."/>
+                        <img src="{{ $user->profile->backgroundImage() }}" alt="..."/>
                 </a>
                 <form id="update-background-image-form" action="{{ route('admin.users.setBackgroundImage', $user->id) }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
@@ -38,7 +37,13 @@ User Profile
             <div class="content">
                 <div class="author">
 
+
+                        <a data-toggle="modal" data-target="#update-profile-image-modal">
+                            <img class="avatar border-white" src="{{ $user->profile->image() }}" alt="..."/>
+                        </a>
+
                         {{-- Update profile image --}}
+                        {{--
                         <a href="{{ route('admin.users.setProfileImage', $user->id) }}"
                             onclick="event.preventDefault();
                             document.getElementById('update-image-form').submit();">
