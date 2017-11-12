@@ -111,7 +111,13 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = $this->users->findOrFail($id);
+        $user->delete();
+
+        return redirect()->back()->with([
+            'message' =>  'User deleted.',
+            'status' => 'success',
+        ]);
     }
 
     /**
