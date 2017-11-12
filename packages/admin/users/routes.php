@@ -16,6 +16,8 @@ Route::prefix(config('users.routes.prefix'))->group(function () {
 
             Route::put('/{user}/image', 'UsersController@setProfileImage')->name('admin.users.setProfileImage');
             Route::put('/{user}/background-image', 'UsersController@setBackgroundImage')->name('admin.users.setBackgroundImage');
+
+            Route::get('/{user}/background-image', 'UsersController@getBackgroundImage')->name('admin.users.background-image');
         });
     });
 });
