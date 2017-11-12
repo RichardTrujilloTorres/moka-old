@@ -87,6 +87,28 @@ class User extends Authenticatable
     }
 
     /**
+     * Is the user lock?.
+     *
+     * @return boolean
+     */
+    public function isLocked()
+    {
+        return ($this->locked === true || $this->locked === 1);
+    }
+
+    /**
+     * UnLocks user out of the application according to specific settings.
+     * This is not the same as unblocking the user.
+     *
+     * @return null
+     */
+    public function unlock()
+    {
+        $this->locked = false;
+        $this->save();
+    }
+
+    /**
      * Locks user out of the application according to specific settings.
      * This is not the same as blocking the user.
      *
@@ -97,5 +119,4 @@ class User extends Authenticatable
         $this->locked = true;
         $this->save();
     }
-
 }
