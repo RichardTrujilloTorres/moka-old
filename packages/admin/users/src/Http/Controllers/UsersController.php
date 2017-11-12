@@ -114,6 +114,43 @@ class UsersController extends Controller
         //
     }
 
+    /**
+     * Unlock user access.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function unlock($id)
+    {
+        $user = $this->users->findOrFail($id);
+        $user->unlock();
+
+        return redirect()->back()->with([
+            'message' =>  'User unlocked.',
+            'status' => 'success',
+        ]);
+    }
+
+
+
+    /**
+     * Lock user access.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function lock($id)
+    {
+        $user = $this->users->findOrFail($id);
+        $user->lock();
+
+        return redirect()->back()->with([
+            'message' =>  'User locked.',
+            'status' => 'success',
+        ]);
+    }
+
+
 
     // Tests shit out. Go figure.
     public function test()
