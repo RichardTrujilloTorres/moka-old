@@ -36,6 +36,19 @@ Users
                                         <i class="fa fa-eye" title="view"></i>
                                     </a>
                                 @endif
+
+                                    @if (! $user->isLocked())
+                                        <a href="{{ route('admin.users.lock', $user->id) }}" id="lock-user" 
+                                            name="lock-user">
+                                            <i class="fa fa-lock" title="lock"></i>
+                                        </a>
+                                    @else
+                                        <a href="{{ route('admin.users.unlock', $user->id) }}" id="unlock-user" 
+                                            name="unlock-user">
+                                            <i class="fa fa-unlock" title="unlock"></i>
+                                        </a>
+                                    @endif
+
                             </td>
                         </tr>
                         @endforeach
