@@ -80,13 +80,24 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
+    /**
+     * Number of files belonging to the user.
+     *
+     * @return int
+     */
     public function numberOfFiles()
     {
         // @todo make this more efficient
         return count($this->files);
     }
 
-    public function spaceUsed()
+    /**
+     * User's total server space usage in GB.
+     *
+     * @param string $unit
+     * @return int
+     */
+    public function spaceUsed($unit = self::defaultStorageUnit)
     {
         // @todo 
         return 0;
