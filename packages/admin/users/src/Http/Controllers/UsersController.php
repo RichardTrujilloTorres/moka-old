@@ -270,7 +270,7 @@ class UsersController extends Controller
 
 
         // save image
-        $filename = 'profile-'.$user->id.'-'.uniqid().'.jpg';
+        $filename = 'profile-background-'.$user->id.'-'.uniqid().'.jpg';
         $image->save(storage_path($filename));
 
         // save profile update
