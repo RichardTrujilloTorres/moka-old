@@ -4,18 +4,24 @@ namespace Admin\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
-
 use App\User;
 use App\Notifications\UserRegistered as UserRegistered;
+
+use Intervention\Image\ImageManager as Image;
+
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UsersController extends Controller
 {
     protected $users;
 
+    protected $image;
 
-    public function __construct(User $users)
+
+    public function __construct(User $users, Image $image)
     {
         $this->users = $users;
+        $this->image = $image;
     }
 
 
@@ -171,5 +177,54 @@ class UsersController extends Controller
         $admin = User::findOrFail(11); // tmp admin
         $admin->notify(new UserRegistered($newUser));
     }
+
+    /**
+     * Update user's background profile image.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function setBackgroundImage(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        if (! $request->has('image')) {
+            return redirect()->back()->with([
+                'message' =>  'Could not find image.',
+                'status' => 'danger',
+            ]);
+        }
+
+        $image = $this->image->make($request->file('image'))->resize(200, 200);
+
+        // save image
+        $filename = 'profile-'.$user->id.'-'.uniqid().'.jpg';
+        $image->save(storage_path($filename));
+
+        // save profile update
+        $user->profile->background_image_url = $filename;
+        $user->profile->save();
+
+        return redirect()->back()->with([
+            'message' =>  'Background image updated.',
+            'status' => 'success',
+        ]);
+    }
+
+
+
+    /**
+     * Update user's profile image.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function setProfileImage(Request $request, $id)
+    {
+        dd($request->all());
+    }
+
+
+
 
 }
