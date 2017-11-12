@@ -260,7 +260,7 @@ class UsersController extends Controller
         }
 
         try {
-            $image = $this->image->make($request->file('image'))->resize(200, 200);
+            $image = $this->image->make($request->file('image'));
         } catch (NotReadableException $e) {
             return redirect()->back()->with([
                 'message' =>  'Unsupported image type or invalid image.',
