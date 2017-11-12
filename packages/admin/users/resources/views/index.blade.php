@@ -49,6 +49,23 @@ Users
                                         </a>
                                     @endif
 
+                                    @if (Auth::user()->isAdmin())
+                                        <a href="{{ route('admin.users.delete', $user->id) }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('delete-user-form').submit();">
+                                            <i class="fa fa-trash" title="remove"></i>
+                                        </a>
+
+                                        <form id="delete-user-form" 
+                                            name="delete-user-form"
+                                            action="{{ route('admin.users.delete', $user->id) }}" 
+                                            method="POST" style="display:none;">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                        </form>
+                                    @endif
+                                    
+
                             </td>
                         </tr>
                         @endforeach
