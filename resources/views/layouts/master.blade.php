@@ -215,4 +215,31 @@
 	<script src="/assets/js/demo.js"></script>
 
 
+    @if (Route::is('admin.dashboard'))
+	<script type="text/javascript">
+    	$(document).ready(function(){
+        	demo.initChartist();
+    	});
+	</script>
+    @endif
+
+    @if (session('message'))
+	<script type="text/javascript">
+    	$(document).ready(function(){
+
+        	// demo.initChartist();
+
+        	$.notify({
+            	icon: 'ti-check',
+            	message: "{{ session('message') }}"
+
+            },{
+                type: '{{ session('status') }}',
+                timer: 4000
+            });
+
+    	});
+	</script>
+    @endif
+
 </html>
