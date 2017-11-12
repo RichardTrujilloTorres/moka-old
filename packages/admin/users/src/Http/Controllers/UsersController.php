@@ -106,7 +106,10 @@ class UsersController extends Controller
         $user->profile->fill($request->all());
         $user->profile->save();
 
-        return redirect()->back();
+        return redirect()->back()->with([
+            'message' =>  'Profile updated.',
+            'status' => 'success',
+        ]);
     }
 
     /**
