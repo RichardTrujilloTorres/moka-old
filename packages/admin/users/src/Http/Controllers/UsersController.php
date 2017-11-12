@@ -284,7 +284,6 @@ class UsersController extends Controller
     }
 
 
-
     /**
      * Update user's profile image.
      *
