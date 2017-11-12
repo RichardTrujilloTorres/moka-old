@@ -8,13 +8,25 @@ use App\User;
 use App\Notifications\UserRegistered as UserRegistered;
 
 use Intervention\Image\ImageManager as Image;
+use League\Glide\ServerFactory;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Intervention\Image\Exception\NotReadableException;
 
 class UsersController extends Controller
 {
+    /**
+     * User model.
+     *
+     * @var \Illuminate\Database\Eloquent\Model
+     */
     protected $users;
 
+    /**
+     * Intervention image manager.
+     *
+     * @var \Intervention\Image\ImageManager 
+     */
     protected $image;
 
 
