@@ -24,6 +24,13 @@ class User extends Authenticatable
     ];
 
     /**
+     * Default space usage storage unit.
+     *
+     * @const string
+     */
+    const defaultStorageUnit = 'GB';
+
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
