@@ -10,8 +10,10 @@
 * []    role and permissions (custom package) 
 * []    notifications
 * []    activity monitor
-* []    dashboard view(s)
+* [x]    dashboard view(s)
 * []    restrict access to admin only (after proper roles & permissions definitions)
+* []    social media statistics API integration
+* []    set images as a service (Glide)
 
 
 
