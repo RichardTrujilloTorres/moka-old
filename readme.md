@@ -22,7 +22,7 @@ Project in its early stages on development. No releases yet.
 * SQL based server
 
 ## Screenshots
-![alt text](https://github.com/RickyNRoses87/admin_panel/tree/master/docs/screenshoots/2017-11-19-02-36-57.png)
+![alt text](https://github.com/RickyNRoses87/admin_panel/tree/master/docs/screenshoots/2017-11-19-02-36-57.png "User profile")
 
 ## Contributing
 All contributions are welcome. Just send a push request. Soon, dedicated channels will be provided.
