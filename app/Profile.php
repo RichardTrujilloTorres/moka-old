@@ -25,6 +25,24 @@ class Profile extends Model
     ];
 
 
+
+    /**
+     * Retrieve profile image url.
+     *
+     * @return string
+     */
+    public function image()
+    {
+        if (! $this->avatar_url) {
+            return '/assets/img/background.jpg';
+        }
+
+        $url = route('admin.users.profile-image', $this->user->id);
+
+        return $url;
+    }
+
+
     /**
      * Retrieve background url.
      *
