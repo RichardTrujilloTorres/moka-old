@@ -71,7 +71,11 @@ Users
                         @endforeach
                     </tbody>
                 </table>
+            </div>
 
+            {{-- Pagination links --}}
+            <div class="content">
+                <p class="text-center">{{ $users->links() }}</p>
             </div>
         </div>
 
