@@ -9,6 +9,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        // @todo
         $statistics = [];
 
         return view('dashboard');// ->with(compact('statistics'));
