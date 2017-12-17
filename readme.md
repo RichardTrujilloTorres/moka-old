@@ -21,7 +21,7 @@ Project in its early stages on development. No releases yet.
 * SQL based server
 
 ## Screenshots
-![ScreenShot](2017-11-19-02-36-57.png "User profile")
+![ScreenShot](profile.png "User profile")
 
 ## Contributing
 All contributions are welcome. Just send a push request. Soon, dedicated channels will be provided.
