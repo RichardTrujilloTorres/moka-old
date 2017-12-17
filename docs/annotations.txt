@@ -24,3 +24,11 @@ Administration:
 
 - search facility (elasticsearch server)
 
+- amCharts
+
+
+
+
+------------------------------
+
+- CI
