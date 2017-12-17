@@ -6,7 +6,7 @@
 * [x]    main layout
 * [x]    user(s) views
 * [x]    login & registration views replacement
-* []    pagination 
+* [x]    pagination 
 * []    role and permissions (custom package) 
 * []    notifications
 * []    activity monitor
