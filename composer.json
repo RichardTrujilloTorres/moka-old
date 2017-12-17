@@ -12,6 +12,7 @@
         "laravel/scout": "^3.0",
         "laravel/tinker": "~1.0",
         "league/glide-laravel": "^1.0",
+        "spatie/laravel-activitylog": "^2.3",
         "spatie/laravel-permission": "^2.7"
     },
     "require-dev": {
