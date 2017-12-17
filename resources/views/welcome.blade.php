@@ -69,7 +69,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        {{-- <a href="{{ route('admin.dashboard') }}">Dashboard</a> --}}
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
@@ -85,7 +85,7 @@
                 <div class="links">
                     <a href="{{ route('admin.dashboard') }}">Go to the Panel</a>
                     <a href="">Documentation</a>
-                    <a href="{{ env('APP_GITHUB_URL') }}">GitHub</a>
+                    <a href="{{ env('APP_GITHUB_URL') }}" target="_blank">GitHub</a>
                 </div>
             </div>
         </div>
