@@ -16,6 +16,14 @@ use Intervention\Image\Exception\NotReadableException;
 class UsersController extends Controller
 {
     /**
+     * Default max number of results per page.
+     *
+     * @const
+     */
+    const DEFAULT_MAX_RESULTS = 10;
+
+
+    /**
      * User model.
      *
      * @var \Illuminate\Database\Eloquent\Model
@@ -44,7 +52,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(self::DEFAULT_MAX_RESULTS);
 
         return view('users::index')->with(compact('users'));
     }
