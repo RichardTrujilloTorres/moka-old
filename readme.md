@@ -1,6 +1,5 @@
 
-# Admin Panel 
-## (to be renamed)
+# Moka
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/RickyNRoses87/admin_panel/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/RickyNRoses87/admin_panel/?branch=master)
 
