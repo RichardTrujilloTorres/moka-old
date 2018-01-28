@@ -10,6 +10,8 @@ use Spatie\Permission\Traits\HasRoles;
 use App\Profile;
 use App\File;
 
+use Carbon\Carbon;
+
 class User extends Authenticatable
 {
     use Notifiable, HasRoles;
@@ -20,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'last_logged_in',
     ];
 
     /**
@@ -105,8 +107,11 @@ class User extends Authenticatable
     
     public function lastLoggedIn()
     {
-        // @todo
-        return "Unknown";
+        if (! $this->last_logged_in) {
+            return "Unknown";
+        }
+
+        return Carbon::createFromTimestamp(strtotime($this->last_logged_in))->diffForHumans();
     }
 
     public function files()
