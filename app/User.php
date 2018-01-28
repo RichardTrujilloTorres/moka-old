@@ -10,6 +10,8 @@ use Spatie\Permission\Traits\HasRoles;
 use App\Profile;
 use App\File;
 
+use Storage;
+
 use Carbon\Carbon;
 
 class User extends Authenticatable
@@ -101,8 +103,12 @@ class User extends Authenticatable
      */
     public function spaceUsed($unit = self::defaultStorageUnit)
     {
-        // @todo 
-        return 0;
+        $space = 0;
+        foreach ($this->files as $file) {
+            $space += Storage::size('files/'.$file->name);
+        }
+
+        return (int) ($space / 1000)." KB";
     }
     
     public function lastLoggedIn()
