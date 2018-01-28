@@ -73,7 +73,7 @@ User Profile
                         <h5>{{ $user->numberOfFiles() }}<br /><small>Files</small></h5>
                     </div>
                     <div class="col-md-4">
-                        <h5>{{ $user->spaceUsed() }}GB<br /><small>Used</small></h5>
+                        <h5>{{ $user->spaceUsed() }}<br /><small>Used</small></h5>
                     </div>
                     <div class="col-md-3">
                         <h5>{{ $user->lastLoggedIn() }}<br /><small>Last logged in</small></h5>
