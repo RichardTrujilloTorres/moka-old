@@ -89,7 +89,6 @@ class UsersController extends Controller
         $user = $this->users->findOrFail($id);
 
         if (! $user->hasProfile()) {
-            dd('here');
             $user->profile->build($user);
         }
 
