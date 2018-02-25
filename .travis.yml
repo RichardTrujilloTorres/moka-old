@@ -1,12 +1,10 @@
 language: php
 
-php: 
-  - 7.0
+php: 7.0
 
 before_script:
   - mysql -e 'create database moka;'
-  - composer self-update
-  - composer install --no-interaction
+  - travis_retry composer self-update
+  - travis_retry composer install --prefer-source --no-interaction
 
-script: 
-  - vendor/bin/phpunit
+script: vendor/bin/phpunit
