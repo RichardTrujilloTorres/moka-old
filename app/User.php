@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Spatie\Permission\Traits\HasRoles;
+use Laravel\Scout\Searchable;
 
 use App\Profile;
 use App\File;
@@ -16,7 +17,7 @@ use Carbon\Carbon;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRoles;
+    use Notifiable, HasRoles, Searchable;
 
     /**
      * The attributes that are mass assignable.
