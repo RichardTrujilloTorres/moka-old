@@ -99,7 +99,7 @@ class User extends Authenticatable
      * User's total server space usage in GB.
      *
      * @param string $unit
-     * @return int
+     * @return string
      */
     public function spaceUsed($unit = self::defaultStorageUnit)
     {
