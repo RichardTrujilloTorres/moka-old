@@ -4,10 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Laravel\Scout\Searchable;
+
 use App\User;
 
 class Profile extends Model
 {
+    use Searchable;
+
+
     protected $fillable = [
         'user_id', 
         'username',
