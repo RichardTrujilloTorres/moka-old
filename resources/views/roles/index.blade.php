@@ -9,7 +9,7 @@ Roles
     <div class="col-md-12">
     
         <div class="card">
-            <button class="btn btn-success">Add</button>
+            <a href="{{ url('users.roles.create') }}" class="btn btn-success">Add</a>
             <button class="btn btn-danger">Eliminate</button>
         </div>
 
