@@ -27,4 +27,5 @@
 
 
 
+* []    configure Scout to use queues
 
