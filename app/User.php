@@ -108,7 +108,7 @@ class User extends Authenticatable
             $space += Storage::size('files/'.$file->name);
         }
 
-        return (int) ($space / 1000)." KB";
+        return ($space / 1000)." KB";
     }
     
     public function lastLoggedIn()
