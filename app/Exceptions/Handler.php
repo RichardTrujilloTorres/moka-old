@@ -2,8 +2,10 @@
 
 namespace App\Exceptions;
 
-use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+
+use Intervention\Image\Exception\NotReadableException;
+use Exception;
 
 class Handler extends ExceptionHandler
 {
@@ -48,6 +50,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        // $this->handle($exception);
+
+        if ($exception instanceof NotReadableException) {
+            return redirect()->back()->with([
+                'message' =>  'Unsupported image type or invalid image.',
+                'status' => 'danger',
+            ]);
+        }
+
         return parent::render($request, $exception);
     }
 }
