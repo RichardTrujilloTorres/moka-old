@@ -81,13 +81,11 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $user = $this->users->findOrFail($id);
-
         if (! $user->hasProfile()) {
             $user->profile->build($user);
         }
@@ -98,12 +96,11 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = $this->users->findOrFail($id);
         if (! $user->hasProfile()) {
             $user->profile = $user->buildProfile();
         }
@@ -115,13 +112,12 @@ class UsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $user)
     {
         // @todo add validation
-        $user = $this->users->findOrFail($id);
         $user->profile->fill($request->all());
         $user->profile->save();
 
@@ -134,12 +130,11 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user = $this->users->findOrFail($id);
         $user->delete();
 
         return redirect()->back()->with([
@@ -151,12 +146,11 @@ class UsersController extends Controller
     /**
      * Unlock user access.
      *
-     * @param  int  $id
+     * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function unlock($id)
+    public function unlock(User $user)
     {
-        $user = $this->users->findOrFail($id);
         $user->unlock();
 
         return redirect()->back()->with([
@@ -170,12 +164,11 @@ class UsersController extends Controller
     /**
      * Lock user access.
      *
-     * @param  int  $id
+     * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function lock($id)
+    public function lock(User $user)
     {
-        $user = $this->users->findOrFail($id);
         $user->lock();
 
         return redirect()->back()->with([
@@ -204,17 +197,16 @@ class UsersController extends Controller
     /**
      * Retrieve user's profile image.
      *
-     * @param  int  $id
+     * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function getProfileImage(Request $request, $id)
+    public function getProfileImage(Request $request, User $user)
     {
         $server = ServerFactory::create([
             'source' => storage_path(),
             'cache' => storage_path().'/cache',
         ]);
 
-        $user = User::findOrFail($id);
         $resizeParams = [
             'w' => $request->has('w') ? @$request['w'] : 300,
             'h' => $request->has('h') ? @$request['h'] : 400,
@@ -227,17 +219,16 @@ class UsersController extends Controller
     /**
      * Update user's background profile image.
      *
-     * @param  int  $id
+     * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function getBackgroundImage(Request $request, $id)
+    public function getBackgroundImage(Request $request, User $user)
     {
         $server = ServerFactory::create([
             'source' => storage_path(),
             'cache' => storage_path().'/cache',
         ]);
 
-        $user = User::findOrFail($id);
         $resizeParams = [
             'w' => $request->has('w') ? @$request['w'] : 300,
             'h' => $request->has('h') ? @$request['h'] : 400,
@@ -252,13 +243,11 @@ class UsersController extends Controller
     /**
      * Update user's background profile image.
      *
-     * @param  int  $id
+     * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function setBackgroundImage(Request $request, $id)
+    public function setBackgroundImage(Request $request, User $user)
     {
-        $user = User::findOrFail($id);
-
         if (! $request->has('image')) {
             return redirect()->back()->with([
                 'message' =>  'Could not find image.',
@@ -266,15 +255,7 @@ class UsersController extends Controller
             ]);
         }
 
-        try {
-            $image = $this->image->make($request->file('image'));
-        } catch (NotReadableException $e) {
-            return redirect()->back()->with([
-                'message' =>  'Unsupported image type or invalid image.',
-                'status' => 'danger',
-            ]);
-        }
-
+        $image = $this->image->make($request->file('image'));
 
         // save image
         $filename = 'profile-background-'.$user->id.'-'.uniqid().'.jpg';
@@ -294,13 +275,11 @@ class UsersController extends Controller
     /**
      * Update user's profile image.
      *
-     * @param  int  $id
+     * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function setProfileImage(Request $request, $id)
+    public function setProfileImage(Request $request, User $user)
     {
-        $user = User::findOrFail($id);
-
         if (! $request->has('profile-image')) {
             return redirect()->back()->with([
                 'message' =>  'Could not find image.',
@@ -308,15 +287,8 @@ class UsersController extends Controller
             ]);
         }
 
-        try {
-            $image = $this->image->make($request->file('profile-image'));
-        } catch (NotReadableException $e) {
-            return redirect()->back()->with([
-                'message' =>  'Unsupported image type or invalid image.',
-                'status' => 'danger',
-            ]);
-        }
-
+        
+        $image = $this->image->make($request->file('profile-image'));
 
         // save image
         $filename = 'profile-'.$user->id.'-'.uniqid().'.jpg';
