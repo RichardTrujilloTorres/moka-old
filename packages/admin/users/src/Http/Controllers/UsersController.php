@@ -4,6 +4,9 @@ namespace Admin\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
+use Illuminate\Http\UploadedFile;
+
+use App\Http\Requests\UpdateUserRequest;
 use App\User;
 use App\Notifications\UserRegistered as UserRegistered;
 
@@ -13,7 +16,6 @@ use League\Glide\ServerFactory;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Intervention\Image\Exception\NotReadableException;
 
-use Illuminate\Http\UploadedFile;
 
 class UsersController extends Controller
 {
@@ -123,9 +125,8 @@ class UsersController extends Controller
      * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        // @todo add validation
         $user->profile->fill($request->all());
         $user->profile->save();
 
