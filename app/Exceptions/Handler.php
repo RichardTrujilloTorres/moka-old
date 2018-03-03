@@ -6,6 +6,8 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 use Intervention\Image\Exception\NotReadableException;
 use Exception;
+use Illuminate\Validation\ValidationException;
+
 
 class Handler extends ExceptionHandler
 {
@@ -56,6 +58,14 @@ class Handler extends ExceptionHandler
             return redirect()->back()->with([
                 'message' =>  'Unsupported image type or invalid image.',
                 'status' => 'danger',
+            ]);
+        }
+
+        if ($exception instanceof ValidationException) {
+            return redirect()->back()->with([
+                'message' =>  $exception->getMessage(),
+                'status' => 'danger',
+                'errors' => $exception->validator->errors(),
             ]);
         }
 
