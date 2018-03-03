@@ -55,10 +55,9 @@ User Profile
                         </form>
                         --}}
 
-
-                  <h4 class="title"><br />
-                     <small>{{ "@" }}{{ $user->profile->username }}</small>
-                  </h4>
+                        <h4 class="title"><br />
+                            <small>{{ "@" }}{{ $user->profile->username }}</small>
+                        </h4>
                 </div>
                 <p class="description text-center">
                     {{-- @todo add phrase formating in here --}}
@@ -181,25 +180,37 @@ User Profile
 
                         <!-- username -->
                         <div class="col-md-3">
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                                 <label>Username</label>
                                 <input type="text" class="form-control border-input" 
                                     placeholder="Username" 
                                     name="username"
                                     id="username"
-                                    value="{{ $user->profile->username }}">
+                                    value="{{ $user->profile->username }}" />
+
+                                @if ($errors->has('username'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
                         <!-- email address -->
                         <div class="col-md-4">
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label for="exampleInputEmail1">Email address</label>
                                 <input type="email" class="form-control border-input" 
                                     placeholder="Email"
                                     name="email"
                                     id="email"
                                     value="{{ $user->email }}" disabled>
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -208,25 +219,37 @@ User Profile
 
                         <!-- first name -->
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
                                 <label>First Name</label>
                                 <input type="text" class="form-control border-input" 
                                     placeholder="..." 
                                     name="first_name"
                                     id="first_name"
                                     value="{{ $user->profile->first_name }}">
+
+                                @if ($errors->has('first_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('first_name') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
-                        <!-- first name -->
+                        <!-- last name -->
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
                                 <label>Last Name</label>
                                 <input type="text" class="form-control border-input" 
                                     placeholder="..." 
                                     name="last_name"
                                     id="last_name"
                                     value="{{ $user->profile->last_name }}">
+
+                                @if ($errors->has('last_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('last_name') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -235,13 +258,19 @@ User Profile
 
                         <!-- address -->
                         <div class="col-md-12">
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                                 <label>Address</label>
                                 <input type="text" class="form-control border-input" 
                                     placeholder="..." 
                                     name="address"
                                     id="address"
                                     value="{{ $user->profile->address }}">
+
+                                @if ($errors->has('address'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -251,37 +280,55 @@ User Profile
 
                         <!-- city -->
                         <div class="col-md-4">
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
                                 <label>City</label>
                                 <input type="text" class="form-control border-input" 
                                     placeholder="..." 
                                     name="city"
                                     id="city"
                                     value="{{ $user->profile->city }}">
+
+                                @if ($errors->has('city'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('city') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
                         <!-- country -->
                         <div class="col-md-4">
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                                 <label>Country</label>
                                 <input type="text" class="form-control border-input" 
                                     placeholder="..." 
                                     name="country"
                                     id="country"
                                     value="{{ $user->profile->country }}">
+
+                                @if ($errors->has('country'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('country') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
                         <!-- zip code -->
                         <div class="col-md-4">
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('zip_code') ? ' has-error' : '' }}">
                                 <label>Postal Code</label>
                                 <input type="number" class="form-control border-input" 
                                     placeholder="..." 
                                     name="zip_code"
                                     id="zip_code"
                                     value="{{ $user->profile->zip_code }}">
+
+                                @if ($errors->has('zip_code'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('zip_code') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -290,13 +337,19 @@ User Profile
 
                         <!-- about -->
                         <div class="col-md-12">
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('about') ? ' has-error' : '' }}">
                                 <label>About Me</label>
                                 <textarea rows="5" class="form-control border-input" 
                                     placeholder="No description yet." 
                                     name="about"
                                     id="about"
                                     value="Mike">{{ $user->profile->about }}</textarea>
+
+                                @if ($errors->has('about'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('about') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                     </div>
