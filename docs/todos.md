@@ -28,4 +28,5 @@
 
 
 * []    configure Scout to use queues
+* []    Google address autocomplete
 
