@@ -13,6 +13,8 @@ use League\Glide\ServerFactory;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Intervention\Image\Exception\NotReadableException;
 
+use Illuminate\Http\UploadedFile;
+
 class UsersController extends Controller
 {
     /**
@@ -22,6 +24,12 @@ class UsersController extends Controller
      */
     const DEFAULT_MAX_RESULTS = 10;
 
+    /**
+     * Default image extension.
+     *
+     * @var string
+     */
+    protected $defaultImageExtension = 'jpg';
 
     /**
      * User model.
@@ -115,7 +123,7 @@ class UsersController extends Controller
      * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $user)
+    public function update(Request $request, User $user)
     {
         // @todo add validation
         $user->profile->fill($request->all());
@@ -202,15 +210,8 @@ class UsersController extends Controller
      */
     public function getProfileImage(Request $request, User $user)
     {
-        $server = ServerFactory::create([
-            'source' => storage_path(),
-            'cache' => storage_path().'/cache',
-        ]);
-
-        $resizeParams = [
-            'w' => $request->has('w') ? @$request['w'] : 300,
-            'h' => $request->has('h') ? @$request['h'] : 400,
-        ];
+        $server = $this->getServerFactory();
+        $resizeParams = $this->getResizeParams($request);
 
         return $server->outputImage($user->profile->avatar_url, $resizeParams);
     }
@@ -224,15 +225,8 @@ class UsersController extends Controller
      */
     public function getBackgroundImage(Request $request, User $user)
     {
-        $server = ServerFactory::create([
-            'source' => storage_path(),
-            'cache' => storage_path().'/cache',
-        ]);
-
-        $resizeParams = [
-            'w' => $request->has('w') ? @$request['w'] : 300,
-            'h' => $request->has('h') ? @$request['h'] : 400,
-        ];
+        $server = $this->getServerFactory();
+        $resizeParams = $this->getResizeParams($request);
 
         // dd($server->getImageResponse($user->profile->background_image_url, $resizeParams));
         return $server->outputImage($user->profile->background_image_url, $resizeParams);
@@ -287,20 +281,83 @@ class UsersController extends Controller
             ]);
         }
 
-        
-        $image = $this->image->make($request->file('profile-image'));
+        $filename = $this->getProfileUniqueFilename($user);
 
-        // save image
-        $filename = 'profile-'.$user->id.'-'.uniqid().'.jpg';
-        $image->save(storage_path($filename));
-
-        // save profile update
-        $user->profile->avatar_url = $filename;
-        $user->profile->save();
+        $this->saveProfileImage($request->file('profile-image'), $user, $filename);
+        $this->setProfileAvatar($user, $filename);
 
         return redirect()->back()->with([
             'message' =>  'Profile image updated.',
             'status' => 'success',
         ]);
+    }
+
+    
+    
+    /**
+     * Save user profile image.
+     *
+     * @param \App\User $user
+     * @param \Illuminate\Http\UploadedFile $file
+     * @param string $filename
+     * @return void
+     */
+    protected function saveProfileImage(UploadedFile $file, User $user, $filename)
+    {
+        $image = $this->image->make($file);
+        $image->save(storage_path($filename));
+    }
+
+    /**
+     * Set user profile avatar.
+     *
+     * @param \App\User $user
+     * @param string $filename
+     * @return void
+     */
+    protected function setProfileAvatar(User $user, $filename)
+    {
+        $user->profile->avatar_url = $filename;
+        $user->profile->save();
+    }
+
+
+    /**
+     * Get user profile unique filename.
+     *
+     * @param \App\User $user
+     * @return string
+     */
+    protected function getProfileUniqueFilename(User $user)
+    {
+        return (string) ('profile-'.$user->id.'-'.uniqid().'.'.$this->defaultImageExtension);
+    }
+
+    /**
+     * Get default Glide server factory.
+     *
+     * @return \League\Glide\ServerFactory
+     */
+    protected function getServerFactory()
+    {
+        return ServerFactory::create([
+            'source' => storage_path(),
+            'cache' => storage_path().'/cache',
+        ]);
+    }
+
+
+    /**
+     * Get default profile image resize params.
+     *
+     * @param \Illuminate\Http\Request
+     * @return array
+     */
+    protected function getResizeParams(Request $request)
+    {
+        return [
+            'w' => $request->has('w') ? @$request['w'] : 300,
+            'h' => $request->has('h') ? @$request['h'] : 400,
+        ];
     }
 }
