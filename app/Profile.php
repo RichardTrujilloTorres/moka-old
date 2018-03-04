@@ -14,18 +14,18 @@ class Profile extends Model
 
 
     protected $fillable = [
-        'user_id', 
+        'user_id',
         'username',
-        'first_name', 
-        'last_name', 
-        'avatar_url', 
-        'company', 
-        'address', 
-        'country', 
-        'city', 
-        'zip_code', 
-        'about', 
-        'phrase', 
+        'first_name',
+        'last_name',
+        'avatar_url',
+        'company',
+        'address',
+        'country',
+        'city',
+        'zip_code',
+        'about',
+        'phrase',
         'background_image_url',
     ];
 

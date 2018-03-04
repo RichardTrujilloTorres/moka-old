@@ -27,7 +27,7 @@ class UpdateUserRequest extends FormRequest
             'username' => 'required|alpha_num',
             'first_name' => 'required',
             'last_name' => 'required',
-            'address' => 'required', 
+            'address' => 'required',
             'city' => 'required', // @todo unique:cities
             'country' => 'required', // @todo unique:countries
             'zip_code' => 'required|integer|digits:5',

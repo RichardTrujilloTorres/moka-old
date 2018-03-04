@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller as Controller;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
-
 class RolesController extends Controller
 {
 
@@ -26,6 +25,4 @@ class RolesController extends Controller
     }
 
     //
-
 }
-

@@ -8,7 +8,6 @@ use Intervention\Image\Exception\NotReadableException;
 use Exception;
 use Illuminate\Validation\ValidationException;
 
-
 class Handler extends ExceptionHandler
 {
     /**

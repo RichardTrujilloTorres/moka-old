@@ -44,7 +44,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    // @tmp 
+    // @tmp
     // @todo replace w/ role and permissions package
     /**
      * Is the user a/the admin?

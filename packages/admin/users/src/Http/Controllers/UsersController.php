@@ -16,7 +16,6 @@ use League\Glide\ServerFactory;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Intervention\Image\Exception\NotReadableException;
 
-
 class UsersController extends Controller
 {
     /**
@@ -34,23 +33,15 @@ class UsersController extends Controller
     protected $defaultImageExtension = 'jpg';
 
     /**
-     * User model.
-     *
-     * @var \Illuminate\Database\Eloquent\Model
-     */
-    protected $users;
-
-    /**
      * Intervention image manager.
      *
-     * @var \Intervention\Image\ImageManager 
+     * @var \Intervention\Image\ImageManager
      */
     protected $image;
 
 
-    public function __construct(User $users, Image $image)
+    public function __construct(Image $image)
     {
-        $this->users = $users;
         $this->image = $image;
     }
 
@@ -65,27 +56,6 @@ class UsersController extends Controller
         $users = User::paginate(self::DEFAULT_MAX_RESULTS);
 
         return view('users::index')->with(compact('users'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        dd($request->all());
     }
 
     /**
@@ -186,21 +156,6 @@ class UsersController extends Controller
         ]);
     }
 
-
-
-    // Tests shit out. Go figure.
-    public function test()
-    {
-        // mimic user registration notification
-        $newUser = User::create([
-            'email' => 'johndoe@email.com',
-            'name' => 'John Doe',
-            'password' => \Hash::make('secret'),
-        ]);
-
-        $admin = User::findOrFail(11); // tmp admin
-        $admin->notify(new UserRegistered($newUser));
-    }
 
 
     /**
@@ -360,5 +315,21 @@ class UsersController extends Controller
             'w' => $request->has('w') ? @$request['w'] : 300,
             'h' => $request->has('h') ? @$request['h'] : 400,
         ];
+    }
+
+
+
+    // Tests shit out. Go figure.
+    public function test()
+    {
+        // mimic user registration notification
+        $newUser = User::create([
+            'email' => 'johndoe@email.com',
+            'name' => 'John Doe',
+            'password' => \Hash::make('secret'),
+        ]);
+
+        $admin = User::findOrFail(11); // tmp admin
+        $admin->notify(new UserRegistered($newUser));
     }
 }

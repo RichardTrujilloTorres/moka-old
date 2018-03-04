@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Users Administration Package Configuration 
+    | Users Administration Package Configuration
     |--------------------------------------------------------------------------
     |
     | //
