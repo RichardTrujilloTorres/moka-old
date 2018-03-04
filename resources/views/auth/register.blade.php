@@ -64,6 +64,11 @@
                                     </div>
 
 
+                                    <!-- captcha -->
+                                    <div class="form-group">
+                                        <div id="recaptcha" class="g-recaptcha" data-sitekey="6LcMaEoUAAAAAKxB057Mqgug1x1lx_esG6x9iMsV"></div>
+                                    </div>
+
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-neutral btn-block">
                                             Register
