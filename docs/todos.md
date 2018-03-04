@@ -21,7 +21,7 @@
 
 
 
-* []    last logged in
+* [x]    last logged in
 * []    File helper: spaced used
 * []    File helper: medium size of a group of files
 
