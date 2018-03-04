@@ -29,4 +29,5 @@
 
 * []    configure Scout to use queues
 * []    Google address autocomplete
+* [x]    Captcha on registration form
 
