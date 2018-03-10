@@ -52,12 +52,12 @@ Users
                                     @if (Auth::user()->isAdmin())
                                         <a href="{{ route('admin.users.delete', $user->id) }}"
                                             onclick="event.preventDefault();
-                                                     document.getElementById('delete-user-form').submit();">
+                                                     document.getElementById('delete-user-form-{{ $user->id }}').submit();">
                                             <i class="fa fa-trash" title="remove"></i>
                                         </a>
 
-                                        <form id="delete-user-form" 
-                                            name="delete-user-form"
+                                        <form id="delete-user-form-{{ $user->id }}" 
+                                            name="delete-user-form-{{ $user->id }}"
                                             action="{{ route('admin.users.delete', $user->id) }}" 
                                             method="POST" style="display:none;">
                                             {{ csrf_field() }}
