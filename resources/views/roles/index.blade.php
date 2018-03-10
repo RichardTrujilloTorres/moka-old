@@ -32,7 +32,6 @@ Roles
                 <table class="table table-striped">
                     <thead>
                         <th>Name</th>
-                        <th>Slug</th>
                         <th>Actions</th>
                     </thead>
                     <tbody>
