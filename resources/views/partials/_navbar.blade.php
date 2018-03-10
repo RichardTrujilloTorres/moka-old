@@ -16,12 +16,15 @@
                 <li>
                     <input class="form-control" style="btn btn-primary" type="search" id="search" name="search">
                 </li>
+
+                {{--
                 <li>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="ti-panel"></i>
                         <p>Stats</p>
                     </a>
                 </li>
+                --}}
                 <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="ti-bell"></i>
