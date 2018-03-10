@@ -31,3 +31,10 @@
 * []    Google address autocomplete
 * [x]    Captcha on registration form
 
+
+
+* []    permissions autocomplete 
+* []    general purpose VueJS components:
+* []        delete resource form
+
+
