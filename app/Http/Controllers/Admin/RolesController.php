@@ -30,7 +30,7 @@ class RolesController extends Controller
     /**
      * Show the form to create a new role.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function create()
     {
@@ -41,7 +41,7 @@ class RolesController extends Controller
      * Create a role.
      *
      * @param \App\Http\Requests\StoreRoleRequest $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreRoleRequest $request)
     {
@@ -68,7 +68,7 @@ class RolesController extends Controller
      * Edit a role.
      *
      * @param \Spatie\Permission\Models\Role $role
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function edit(Role $role)
     {
@@ -80,7 +80,7 @@ class RolesController extends Controller
      *
      * @param \Spatie\Permission\Models\Role $role
      * @param \App\Http\Requests\StoreRoleRequest $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Role $role, StoreRoleRequest $request)
     {
@@ -97,7 +97,7 @@ class RolesController extends Controller
      * Delete a role.
      *
      * @param \Spatie\Permission\Models\Role $role
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function delete(Role $role)
     {
