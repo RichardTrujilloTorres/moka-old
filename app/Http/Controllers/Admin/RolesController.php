@@ -18,7 +18,7 @@ class RolesController extends Controller
     /**
      * Roles listing.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -42,6 +42,7 @@ class RolesController extends Controller
      *
      * @param \App\Http\Requests\StoreRoleRequest $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function store(StoreRoleRequest $request)
     {
