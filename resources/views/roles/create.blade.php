@@ -7,94 +7,65 @@ Roles
 @section('content')
 <div class="row">
     <div class="col-md-12">
-    
-        <div class="card">
-            <button class="btn btn-success">Add</button>
-            <button class="btn btn-danger">Eliminate</button>
-        </div>
-
         
         <div class="card">
             <div class="header">
-                <h4 class="title">Role Listing</h4>
-                <p class="category">Users</p>
+                <h4 class="title">New Role</h4>
             </div>
 
-            <div class="content table-responsive table-full-width">
+            <div class="content">
+                <div class="row">
 
-                @if ($roles->isEmpty())
-                <div class="form-control">
-                    No roles yet
+                    <div class="col-md-6">
+
+                        <!-- role creation form -->
+                        <form method="POST" action="{{ route('admin.roles.store') }}">
+                            {{ csrf_field() }}
+
+                            <!-- name -->
+                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+
+                                    <label for="name" class="control-label">Name</label>
+                                    <input id="name" type="text" class="form-control" 
+                                        name="name" 
+                                        value="{{ old('name') }}" 
+                                        required>
+
+                                    @if ($errors->has('name'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
+                            </div>
+
+                            <!-- permission -->
+                            <div class="form-group{{ $errors->has('permission') ? ' has-error' : '' }}">
+
+                                    // TODO
+                                    {{--
+                                    <label for="permission" class="control-label">Name</label>
+                                    <input id="permission" type="text" class="form-control" 
+                                        name="permission" 
+                                        value="{{ old('permission') }}" 
+                                        required>
+
+                                    @if ($errors->has('permission'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('permission') }}</strong>
+                                        </span>
+                                    @endif
+                                    --}}
+                            </div>
+
+                            <div class="text-center">
+                                <input type="submit" class="btn btn-info btn-fill btn-wd" value="Save"/ >
+                                <div class="clearfix"></div>
+                            </div>
+
+
+                        </form>
+                    </div>
                 </div>
-                @endif
-                            
-                @if (! $roles->isEmpty())
-                <table class="table table-striped">
-                    <thead>
-                        <th>Name</th>
-                        <th>Slug</th>
-                        <th>Actions</th>
-                    </thead>
-                    <tbody>
-
-                        @foreach ($roles as $role)
-                        <tr>
-                            <td>{{ $role->name }}</td>
-                            <td>{{ $role->slug }}</td>
-                            <td>// @todo</td>
-
-                            {{--
-                            <td>
-                                @if (Auth::user()->isAdmin())
-                                    <a href="{{ route('admin.users.edit', $user->id) }}">
-                                        <i class="fa fa-edit" title="edit"></i>
-                                    </a>
-                                @else
-                                    <a href="{{ route('admin.users.show', $user->id) }}">
-                                        <i class="fa fa-eye" title="view"></i>
-                                    </a>
-                                @endif
-
-                                    @if (! $user->isLocked())
-                                        <a href="{{ route('admin.users.lock', $user->id) }}" id="lock-user" 
-                                            name="lock-user">
-                                            <i class="fa fa-lock" title="lock"></i>
-                                        </a>
-                                    @else
-                                        <a href="{{ route('admin.users.unlock', $user->id) }}" id="unlock-user" 
-                                            name="unlock-user">
-                                            <i class="fa fa-unlock" title="unlock"></i>
-                                        </a>
-                                    @endif
-
-                                    @if (Auth::user()->isAdmin())
-                                        <a href="{{ route('admin.users.delete', $user->id) }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('delete-user-form').submit();">
-                                            <i class="fa fa-trash" title="remove"></i>
-                                        </a>
-
-                                        <form id="delete-user-form" 
-                                            name="delete-user-form"
-                                            action="{{ route('admin.users.delete', $user->id) }}" 
-                                            method="POST" style="display:none;">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                        </form>
-                                    @endif
-                                    
-
-                            </td>
-                            --}}
-
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                @endif
-
-            </div>
-
         </div>
 
     </div>
