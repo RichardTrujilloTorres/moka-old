@@ -23,8 +23,27 @@ Administration:
 
 
 - search facility (elasticsearch server)
-
 - amCharts
+
+
+
+
+
+-------------------------
+AmCharts
+
+users:
+    - registered
+    - confirmed
+    - locked
+
+space:
+    - total per user
+    - available per user
+
+files:
+    - total per user
+    - created last month/week
 
 
 
