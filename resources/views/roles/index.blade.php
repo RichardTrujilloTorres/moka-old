@@ -9,7 +9,7 @@ Roles
     <div class="col-md-12">
     
         <div class="card">
-            <a href="{{ url('users.roles.create') }}" class="btn btn-success">Add</a>
+            <a href="{{ route('admin.roles.create') }}" class="btn btn-success">Add</a>
             <button class="btn btn-danger">Eliminate</button>
         </div>
 
