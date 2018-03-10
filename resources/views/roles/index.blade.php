@@ -39,53 +39,25 @@ Roles
                         @foreach ($roles as $role)
                         <tr>
                             <td>{{ $role->name }}</td>
-                            <td>{{ $role->slug }}</td>
-                            <td>// @todo</td>
-
-                            {{--
                             <td>
-                                @if (Auth::user()->isAdmin())
-                                    <a href="{{ route('admin.users.edit', $user->id) }}">
-                                        <i class="fa fa-edit" title="edit"></i>
-                                    </a>
-                                @else
-                                    <a href="{{ route('admin.users.show', $user->id) }}">
-                                        <i class="fa fa-eye" title="view"></i>
-                                    </a>
-                                @endif
+                                <a href="{{ route('admin.roles.edit', $role->id) }}">
+                                    <i class="fa fa-edit" title="edit"></i>
+                                </a>
 
-                                    @if (! $user->isLocked())
-                                        <a href="{{ route('admin.users.lock', $user->id) }}" id="lock-user" 
-                                            name="lock-user">
-                                            <i class="fa fa-lock" title="lock"></i>
-                                        </a>
-                                    @else
-                                        <a href="{{ route('admin.users.unlock', $user->id) }}" id="unlock-user" 
-                                            name="unlock-user">
-                                            <i class="fa fa-unlock" title="unlock"></i>
-                                        </a>
-                                    @endif
+                                <a href="{{ route('admin.roles.delete', $role->id) }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('delete-role-form-{{ $role->id }}').submit();">
+                                    <i class="fa fa-trash" title="remove"></i>
+                                </a>
 
-                                    @if (Auth::user()->isAdmin())
-                                        <a href="{{ route('admin.users.delete', $user->id) }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('delete-user-form').submit();">
-                                            <i class="fa fa-trash" title="remove"></i>
-                                        </a>
-
-                                        <form id="delete-user-form" 
-                                            name="delete-user-form"
-                                            action="{{ route('admin.users.delete', $user->id) }}" 
-                                            method="POST" style="display:none;">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                        </form>
-                                    @endif
-                                    
-
+                                <form id="delete-role-form-{{ $role->id }}" 
+                                    name="delete-role-form-{{ $role->id }}"
+                                    action="{{ route('admin.roles.delete', $role->id) }}" 
+                                    method="POST" style="display:none;">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                </form>
                             </td>
-                            --}}
-
                         </tr>
                         @endforeach
                     </tbody>
