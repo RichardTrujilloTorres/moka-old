@@ -56,7 +56,7 @@ class RolesController extends Controller
         ]);
 
         if (! $role) {
-            return new \Exception("Could not create role.");
+            throw new \Exception("Could not create role.");
         }
 
         return redirect()->route('admin.roles')->with([
