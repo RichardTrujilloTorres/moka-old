@@ -1,8 +1,7 @@
 
 # Moka
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/RickyNRoses87/admin_panel/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/RickyNRoses87/admin_panel/?branch=master)
-
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/RickyNRoses87/moka/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/RickyNRoses87/moka/?branch=master)
 
 ## About
 A full-fledged, out-of-the-box, administration panel.
