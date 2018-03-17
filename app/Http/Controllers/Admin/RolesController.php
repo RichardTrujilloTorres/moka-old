@@ -46,10 +46,6 @@ class RolesController extends Controller
      */
     public function store(StoreRoleRequest $request)
     {
-
-        // @todo allow the possibility to add permission(s) on 
-        // role creation
-
         $role = Role::create([
             'name' => $request->name,
             //
