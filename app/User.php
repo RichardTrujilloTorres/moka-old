@@ -47,7 +47,7 @@ class User extends Authenticatable
     // @tmp
     // @todo replace w/ role and permissions package
     /**
-     * Is the user a/the admin?
+     * Admin role check.
      *
      * @return boolean
      */
