@@ -10,7 +10,6 @@ Roles
     
         <div class="card">
             <a href="{{ route('admin.roles.create') }}" class="btn btn-success">Add</a>
-            <button class="btn btn-danger">Eliminate</button>
         </div>
 
         
