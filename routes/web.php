@@ -19,7 +19,11 @@ Route::redirect('/home', '/admin/dashboard', 301);
 |--------------------------------------------------------------------------
 */
 Route::namespace('Admin')->group(function () {
-    Route::middleware(['web', 'auth'])->group(function () {
+    Route::middleware([
+        'web', 
+        'auth', 
+        'role:admin',
+    ])->group(function () {
         Route::prefix('/admin')->group(function () {
             Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
 
