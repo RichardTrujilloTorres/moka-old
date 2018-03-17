@@ -10,8 +10,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/home', 'HomeController@index')->name('home');
-
+Route::redirect('/home', '/admin/dashboard', 301);
 
 
 /*
