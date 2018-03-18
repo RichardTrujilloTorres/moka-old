@@ -3,6 +3,7 @@ language: php
 php: 7.0
 
 before_script:
+  - cp .env.travis .env
   - mysql -e 'create database moka;'
   - travis_retry composer self-update
   - travis_retry composer install --prefer-source --no-interaction
