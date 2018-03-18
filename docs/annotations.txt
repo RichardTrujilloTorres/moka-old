@@ -12,7 +12,7 @@ Administration:
 
 - user status: active, unactive, blocked, etc.
 - social media login & registration
-- captcha
+- recaptcha
 - logger: ip addresses, log in, registration, etc.
 - group users
 - tagging system
@@ -24,6 +24,8 @@ Administration:
 
 - search facility (elasticsearch server)
 - amCharts
+
+- analytics
 
 
 
