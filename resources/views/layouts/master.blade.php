@@ -116,7 +116,10 @@
                     </ul>
                 </nav>
 				<div class="copyright pull-right">
+                    &copy; 2018, made with <i class="fa fa-coffee cofee"></i> by <a href="">Richard Trujillo</a>
+                    {{-- 
                     &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-coffee cofee"></i> by <a href="">Richard Trujillo</a>
+                    --}}
                 </div>
             </div>
         </footer>
