@@ -155,6 +155,7 @@
 	<script src="/assets/js/demo.js"></script>
 
 
+    {{-- 
     @if (Route::is('admin.dashboard'))
 	<script type="text/javascript">
     	$(document).ready(function(){
@@ -162,6 +163,7 @@
     	});
 	</script>
     @endif
+    --}}
 
     @if (session('message'))
 	<script type="text/javascript">
