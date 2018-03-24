@@ -11,6 +11,7 @@ Route::get('/', function () {
 
 
 Route::redirect('/home', '/admin/dashboard', 301);
+Route::get('/component', 'HomeController@component');
 
 
 /*
