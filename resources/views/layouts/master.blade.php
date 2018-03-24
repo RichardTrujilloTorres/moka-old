@@ -89,7 +89,7 @@
     	</div>
     </div>
 
-    <div class="main-panel">
+    <div class="main-panel" id="app">
 
     @include('partials._navbar')
         <div class="content">
