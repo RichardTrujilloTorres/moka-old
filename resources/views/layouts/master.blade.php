@@ -140,7 +140,7 @@
 	<script src="/assets/js/bootstrap-checkbox-radio.js"></script>
 
 	<!--  Charts Plugin -->
-	<script src="/assets/js/chartist.min.js"></script>
+	<!-- <script src="/assets/js/chartist.min.js"></script> -->
 
     <!--  Notifications Plugin    -->
     <script src="/assets/js/bootstrap-notify.js"></script>
