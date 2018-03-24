@@ -14,7 +14,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- search -->
                 <li>
-                    <input class="form-control" style="btn btn-primary" type="search" id="search" name="search">
+                    <search></search>
                 </li>
 
                 {{--
