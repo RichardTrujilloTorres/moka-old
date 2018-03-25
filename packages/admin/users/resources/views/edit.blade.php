@@ -365,6 +365,18 @@ User Profile
 
 </div>
 
+
+
+
+@endsection
+
+@section('partials')
+    @include('partials._update_background_image_modal')
+    @include('partials._update_profile_image_modal')
+@endsection
+
+@section('javascripts')
+
 <script>
 
     var placeSearch, autocomplete;
@@ -421,14 +433,8 @@ User Profile
   }
 
 </script>
-
+    
 <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_PLACES_AUTOCOMPLETE_KEY') }}&libraries=places&callback=initAutocomplete"></script>
 
-
-
 @endsection
 
-@section('partials')
-    @include('partials._update_background_image_modal')
-    @include('partials._update_profile_image_modal')
-@endsection
