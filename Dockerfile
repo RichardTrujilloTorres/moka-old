@@ -37,28 +37,21 @@ COPY . /var/www/laravel
 # set permissions
 RUN /bin/chown -R www-data:www-data /var/www/laravel/storage /var/www/laravel/bootstrap/cache /var/www/laravel/storage/logs
 
-RUN /bin/chmod -R 777  /var/www/laravel/storage/*
-# RUN /bin/chown -R www-data:www-data /var/www/laravel
-# RUN find /var/www/laravel -type f -exec chmod 644 {} \;
-# RUN find /var/www/laravel -type d -exec chmod 755 {} \;
-
-# tmp: setup .env
-# COPY /var/www/laravel/.env.example /var/www/laravel/.env
+# RUN /bin/chmod -R 777  /var/www/laravel/storage/*
+RUN /bin/chown -R www-data:www-data /var/www/laravel
+RUN find /var/www/laravel -type f -exec chmod 644 {} \;
+RUN find /var/www/laravel -type d -exec chmod 755 {} \;
 
 # post-installation 
-RUN cd /var/www/laravel/
-RUN php artisan migrate
+WORKDIR /var/www/laravel
+COPY .env.example .env
+# RUN php artisan migrate
 # RUN php artisan db:seed
+RUN php artisan key:generate
 
 
 EXPOSE 80
 EXPOSE 443
 EXPOSE 3306
 
-
-# migrations
-# RUN cd /var/www/laravel && php artisan migrate # connection refused
-
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
-
-
