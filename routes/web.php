@@ -22,7 +22,7 @@ Route::namespace('Admin')->group(function () {
     Route::middleware([
         'web', 
         'auth', 
-        'role:admin',
+        // 'role:admin',
     ])->group(function () {
         Route::prefix('/admin')->group(function () {
             Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
