@@ -55,7 +55,7 @@ class RolesController extends Controller
             throw new \Exception("Could not create role.");
         }
 
-        return redirect()->route('admin.roles')->with([
+        return redirect()->route('admin.users.roles.index')->with([
             'message' =>  'Role created.',
             'status' => 'success',
         ]);
@@ -83,7 +83,7 @@ class RolesController extends Controller
     {
         $role->update($request->all());
 
-        return redirect()->route('admin.roles')->with([
+        return redirect()->route('admin.users.roles.index')->with([
             'message' =>  'Role update.',
             'status' => 'success',
         ]);
@@ -96,7 +96,7 @@ class RolesController extends Controller
      * @param \Spatie\Permission\Models\Role $role
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function delete(Role $role)
+    public function destroy(Role $role)
     {
         $role->delete();
 
