@@ -14,6 +14,7 @@
 
         <ul class="nav">
 
+        {{-- Dashboard --}}
         @if (Route::is('admin.dashboard'))
             <li class="active">
         @else
@@ -25,27 +26,43 @@
                 </a>
             </li>
 
-            @if (Route::is('admin.users.*') && !Route::is('admin.users.roles.*') || Route::is('admin.users.index'))
-                <li class="active">
-            @else
-                <li>
-            @endif
-                    <a href="{{ route('admin.users.index') }}">
-                        <i class="ti-user"></i>
-                        <p>Users</p>
-                    </a>
-                </li>
+        {{-- Users --}}
+        @if (Route::is('admin.users.*') && !Route::is('admin.users.roles.*') && !Route::is('admin.users.permissions.*'))
+            <li class="active">
+        @else
+            <li>
+        @endif
+                <a href="{{ route('admin.users.index') }}">
+                    <i class="ti-user"></i>
+                    <p>Users</p>
+                </a>
+            </li>
 
-                @if (Route::is('admin.users.roles.*') || Route::is('admin.users.roles'))
-                    <li class="active">
-                @else
-                    <li>
+        {{-- Roles --}}
+        @if (Route::is('admin.users.roles.*'))
+            <li class="active">
+        @else
+            <li>
+        @endif
+                <a href="{{ route('admin.users.roles.index') }}">
+                    <i class="ti-lock"></i>
+                    <p>Roles</p>
+                </a>
+            </li>
+
+        {{-- Permissions --}}
+        @if (Route::is('admin.users.permissions.*'))
+            <li class="active">
+        @else
+            <li>
                 @endif
-                        <a href="{{ route('admin.users.roles.index') }}">
-                            <i class="ti-lock"></i>
-                            <p>Roles</p>
-                        </a>
-                    </li>
+                <a href="{{ route('admin.users.permissions.index') }}">
+                    <i class="ti-unlink"></i>
+                    <p>Permissions</p>
+                </a>
+            </li>
+
         </ul>
+
     </div>
 </div>
