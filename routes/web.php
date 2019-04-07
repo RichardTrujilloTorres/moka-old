@@ -18,9 +18,34 @@ Route::redirect('/home', '/admin/dashboard', 301);
 | Admin
 |--------------------------------------------------------------------------
 */
+Route::group([
+    'prefix' => 'admin',
+    'as' => 'admin.',
+    'middleware' => ['auth',],
+    'namespace' => 'Admin',
+    // 'middleware' => ['auth', 'role:admin'],
+], function () {
+
+    // Dashboard
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+
+    /**
+     * Users
+     */
+    Route::group([
+        'prefix' => 'users',
+        'as'    => 'users.',
+    ], function () {
+        Route::resource('roles', 'RolesController');
+        Route::resource('permissions', 'PermissionsController');
+    });
+
+});
+
+/*
 Route::namespace('Admin')->group(function () {
     Route::middleware([
-        'web', 
+        // 'web',
         'auth', 
         // 'role:admin',
     ])->group(function () {
@@ -36,6 +61,7 @@ Route::namespace('Admin')->group(function () {
         });
     });
 });
+*/
 
 
 Auth::routes();
