@@ -19,7 +19,7 @@ Roles
                     <div class="col-md-6">
 
                         <!-- role creation form -->
-                        <form method="POST" action="{{ route('admin.roles.update', $role->id) }}">
+                        <form method="POST" action="{{ route('admin.users.roles.update', $role->id) }}">
                             {{ csrf_field() }}
                             {{ method_field('PUT') }}
 
@@ -31,7 +31,7 @@ Roles
                                         name="name" 
                                         value="{{ old('name') }}" 
                                         placeholder="{{ $role->name }}"
-                                        required>
+                                        >
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">

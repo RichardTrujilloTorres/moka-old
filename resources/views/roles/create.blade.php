@@ -19,7 +19,7 @@ Roles
                     <div class="col-md-6">
 
                         <!-- role creation form -->
-                        <form method="POST" action="{{ route('admin.roles.store') }}">
+                        <form method="POST" action="{{ route('admin.users.roles.store') }}">
                             {{ csrf_field() }}
 
                             <!-- name -->
@@ -29,7 +29,7 @@ Roles
                                     <input id="name" type="text" class="form-control" 
                                         name="name" 
                                         value="{{ old('name') }}" 
-                                        required>
+                                        >
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -41,7 +41,7 @@ Roles
                             <!-- permission -->
                             <div class="form-group{{ $errors->has('permission') ? ' has-error' : '' }}">
 
-                                    // TODO
+                                    // TODO: inline permission association
                                     {{--
                                     <label for="permission" class="control-label">Name</label>
                                     <input id="permission" type="text" class="form-control" 
@@ -58,7 +58,7 @@ Roles
                             </div>
 
                             <div class="text-center">
-                                <input type="submit" class="btn btn-info btn-fill btn-wd" value="Save"/ >
+                                <input type="submit" class="btn btn-info btn-fill btn-wd" value="Save" />
                                 <div class="clearfix"></div>
                             </div>
 

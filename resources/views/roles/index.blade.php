@@ -9,7 +9,7 @@ Roles
     <div class="col-md-12">
     
         <div class="card">
-            <a href="{{ route('admin.roles.create') }}" class="btn btn-success">Add</a>
+            <a href="{{ route('admin.users.roles.create') }}" class="btn btn-success">Add</a>
         </div>
 
         
@@ -39,11 +39,11 @@ Roles
                         <tr>
                             <td>{{ $role->name }}</td>
                             <td>
-                                <a href="{{ route('admin.roles.edit', $role->id) }}">
+                                <a href="{{ route('admin.users.roles.edit', $role->id) }}">
                                     <i class="fa fa-edit" title="edit"></i>
                                 </a>
 
-                                <a href="{{ route('admin.roles.delete', $role->id) }}"
+                                <a href="{{ route('admin.users.roles.destroy', $role->id) }}"
                                     onclick="event.preventDefault();
                                              document.getElementById('delete-role-form-{{ $role->id }}').submit();">
                                     <i class="fa fa-trash" title="remove"></i>
@@ -51,7 +51,7 @@ Roles
 
                                 <form id="delete-role-form-{{ $role->id }}" 
                                     name="delete-role-form-{{ $role->id }}"
-                                    action="{{ route('admin.roles.delete', $role->id) }}" 
+                                    action="{{ route('admin.users.roles.destroy', $role->id) }}"
                                     method="POST" style="display:none;">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
