@@ -32,7 +32,7 @@
 </head>
 <body>
 
-<div class="wrapper">
+<div class="wrapper" id="app">
 
     @include('partials._sidebar')
 
@@ -122,5 +122,7 @@
     	});
 	</script>
     @endif
+
+    <script src="{{ asset('js/app.js') }}"></script>
 
 </html>
