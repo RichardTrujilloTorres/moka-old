@@ -63,7 +63,9 @@
                     </ul>
                 </nav>
 				<div class="copyright pull-right">
+                    <!--
                     &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-coffee cofee"></i> by <a href="">Richard Trujillo</a>
+                    -->
                 </div>
             </div>
         </footer>
@@ -84,7 +86,7 @@
 	<script src="/assets/js/bootstrap-checkbox-radio.js"></script>
 
 	<!--  Charts Plugin -->
-	<script src="/assets/js/chartist.min.js"></script>
+	<!-- <script src="/assets/js/chartist.min.js"></script> -->
 
     <!--  Notifications Plugin    -->
     <script src="/assets/js/bootstrap-notify.js"></script>
