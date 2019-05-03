@@ -32,13 +32,7 @@
                             <p>Notifications</p>
                             <b class="caret"></b>
                       </a>
-                      <ul class="dropdown-menu">
-                        @if (empty(@$notifications))
-                        <li><a href="">You have no notifications.</a></li>
-                        @else
-                        <li><a href="{{ $notification->url }}">{{ $notification->description }}</a></li>
-                        @endif
-                      </ul>
+                    <notification-listing></notification-listing>
                 </li>
                 <li>
                     <a href="#">
