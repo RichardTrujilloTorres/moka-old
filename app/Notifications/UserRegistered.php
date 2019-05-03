@@ -63,6 +63,7 @@ class UserRegistered extends Notification implements ShouldQueue
         return [
             'name' => $this->user->name,
             'email' => $this->user->email,
+            'text' => 'New user registered.'
         ];
     }
 }
