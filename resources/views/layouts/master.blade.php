@@ -24,9 +24,6 @@
     <!--  Paper Dashboard core CSS    -->
     <link href="/assets/css/paper-dashboard.css" rel="stylesheet"/>
 
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="/assets/css/demo.css" rel="stylesheet" />
-
     <!--  Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
@@ -98,14 +95,11 @@
     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 	<script src="/assets/js/paper-dashboard.js"></script>
 
-	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-	<script src="/assets/js/demo.js"></script>
-
 
     @if (Route::is('admin.dashboard'))
 	<script type="text/javascript">
     	$(document).ready(function(){
-        	demo.initChartist();
+        	// demo.initChartist();
     	});
 	</script>
     @endif
