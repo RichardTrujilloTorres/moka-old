@@ -60,7 +60,9 @@ class NotificationsController extends Controller
      */
     public function show($id)
     {
-        //
+        $notification = auth()->user()->notifications->where('id', $id)->first();
+
+        return view('notifications.show')->with(compact('notification'));
     }
 
     /**
