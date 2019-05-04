@@ -53,6 +53,8 @@ Route::group([
     ], function () {
         Route::resource('roles', 'RolesController');
         Route::resource('permissions', 'PermissionsController');
+        Route::resource('notifications', 'NotificationsController');
+        Route::put('notifications/mark-as-read/{id}', 'NotificationsController@markAsRead')->name('notifications.mark-as-read');
     });
 
 });
