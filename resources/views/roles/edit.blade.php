@@ -7,7 +7,7 @@ Roles
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        
+
         <div class="card">
             <div class="header">
                 <h4 class="title">Edit Role</h4>
@@ -27,9 +27,9 @@ Roles
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
                                     <label for="name" class="control-label">Name</label>
-                                    <input id="name" type="text" class="form-control" 
-                                        name="name" 
-                                        value="{{ old('name') }}" 
+                                    <input id="name" type="text" class="form-control"
+                                        name="name"
+                                        value="{{ old('name') }}"
                                         placeholder="{{ $role->name }}"
                                         >
 
@@ -41,7 +41,7 @@ Roles
                             </div>
 
                             <div class="text-center">
-                                <input type="submit" class="btn btn-info btn-fill btn-wd" value="Save"/ >
+                                <input type="submit" class="btn btn-info btn-fill btn-wd" value="Save" />
                                 <div class="clearfix"></div>
                             </div>
 
