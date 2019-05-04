@@ -33,6 +33,11 @@ Notifications
                             <td>{{ $notification->data['text'] }}</td>
                             <td>
 
+                                {{-- detail --}}
+                                <a href="{{ route('admin.users.notifications.show', $notification->id) }}">
+                                    <i class="fa fa-eye" title="details"></i>
+                                </a>
+
                                 {{-- mark as read --}}
                                 <a href="{{ route('admin.users.notifications.mark-as-read', $notification->id) }}"
                                    onclick="event.preventDefault();
