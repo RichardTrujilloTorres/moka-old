@@ -21,6 +21,8 @@
                      :show-no-results="false"
                      :hide-selected="true"
                      @search-change="search"
+                     @select="optionSelected"
+                     @remove="optionRemoved"
         >
             <template slot="tag" slot-scope="{ option, remove }"><span class="custom__tag"><span>{{ option.name }}</span>
                 <span class="custom__remove" @click="remove(option)">❌</span></span>
@@ -39,14 +41,29 @@
         components: {
             Multiselect
         },
+        computed: {
+            selectedRoles: {
+                get() {
+                    return this.$store.getters.getRoles
+                },
+                set(value) {
+                    //
+                }
+            }
+        },
         data () {
             return {
-                selectedRoles: [],
                 roles: [],
                 isLoading: false
             }
         },
         methods: {
+            optionSelected(option) {
+                this.$emit('role-selected', option)
+            },
+            optionRemoved(option) {
+                this.$emit('role-removed', option)
+            },
             limitText (count) {
                 return `and ${count} other roles`
             },
@@ -54,13 +71,13 @@
                 this.isLoading = true
                 search(query)
                     .then(res => {
-                        console.log(res)
                         this.roles = res.data.data.roles
                         this.isLoading = false
                     })
             },
             clear() {
                 this.selectedRoles = []
+                this.$emit('roles-cleared')
             }
         }
     }
