@@ -25,6 +25,7 @@ Route::group([
     'namespace' => 'Api',
 ], function () {
     Route::resource('notifications', 'NotificationsController');
+    Route::get('search/users', 'SearchController@users');
 });
 
 
