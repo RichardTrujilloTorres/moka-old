@@ -19,6 +19,9 @@ Vue.component('notification-listing', require('./components/NotificationListing.
 Vue.component('user-multiselect', require('./components/UserMultiselect.vue'));
 Vue.component('role-multiselect', require('./components/RoleMultiselect.vue'));
 
+import store from './store';
+
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    store
 });
