@@ -31,10 +31,11 @@ class SearchController extends Controller
      * @param int $limit
      * @return mixed
      */
-    protected function search($table, $limit = 20)
+    protected function search($table, $field, $limit = 20)
     {
+        // TODO add multiple field support
         $results = DB::table($table)
-            ->where('email', 'LIKE', "%{$this->query}%")
+            ->where($field, 'LIKE', "%{$this->query}%")
             ->limit($limit)
             ->get();
 
@@ -46,7 +47,7 @@ class SearchController extends Controller
      */
     public function users()
     {
-        $users = $this->search('users');
+        $users = $this->search('users', 'email');
 
         return response()->json([
             'data' => compact('users') ,
