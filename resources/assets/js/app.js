@@ -18,6 +18,7 @@ window.Vue = require('vue');
 Vue.component('notification-listing', require('./components/NotificationListing.vue'));
 Vue.component('user-multiselect', require('./components/UserMultiselect.vue'));
 Vue.component('role-multiselect', require('./components/RoleMultiselect.vue'));
+Vue.component('user-role-association', require('./components/UserRoleAssociation.vue'));
 
 import store from './store';
 
