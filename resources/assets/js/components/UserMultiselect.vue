@@ -21,6 +21,8 @@
                      :show-no-results="false"
                      :hide-selected="true"
                      @search-change="search"
+                     @select="optionSelected"
+                     @remove="optionRemoved"
         >
             <template slot="tag" slot-scope="{ option, remove }"><span class="custom__tag"><span>{{ customLabel(option) }}</span>
                 <span class="custom__remove" @click="remove(option)">❌</span></span>
@@ -39,14 +41,29 @@
         components: {
             Multiselect
         },
+        computed: {
+            selectedUsers: {
+                get() {
+                    return this.$store.getters.getUsers
+                },
+                set(value) {
+                    //
+                }
+            }
+        },
         data () {
             return {
-                selectedUsers: [],
                 users: [],
                 isLoading: false
             }
         },
         methods: {
+            optionRemoved(option) {
+                this.$emit('user-removed', option)
+            },
+            optionSelected(option) {
+                this.$emit('user-selected', option)
+            },
             customLabel(option) {
                 return `${option.name} (${option.email})`
             },
@@ -57,13 +74,13 @@
                 this.isLoading = true
                 search(query)
                     .then(res => {
-                        console.log(res)
                         this.users = res.data.data.users
                         this.isLoading = false
                     })
             },
             clear() {
                 this.selectedUsers = []
+                this.$emit('users-cleared')
             }
         }
     }
