@@ -55,4 +55,18 @@ class SearchController extends Controller
             'message' => '',
         ]);
     }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function roles()
+    {
+        $roles = $this->search('roles', 'name');
+
+        return response()->json([
+            'data' => compact('roles') ,
+            'status' => 'success',
+            'message' => '',
+        ]);
+    }
 }
