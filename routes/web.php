@@ -26,6 +26,7 @@ Route::group([
 ], function () {
     Route::resource('notifications', 'NotificationsController');
     Route::get('search/users', 'SearchController@users');
+    Route::get('search/roles', 'SearchController@roles');
 });
 
 
