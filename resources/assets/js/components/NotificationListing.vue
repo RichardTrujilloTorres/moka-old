@@ -39,7 +39,7 @@
             // TODO resource building
             axios.get('/api/notifications')
                 .then(res => this.notifications = res.data.data.notifications)
-                .catch(res => console.log(res))
+                .catch(res => console.log(res)) // TODO set error handling
         },
     }
 </script>
