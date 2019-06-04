@@ -14,22 +14,34 @@
                         @user-selected="userSelected"
                         @user-removed="removeUser"
                     ></user-multiselect>
+                    <span v-if="errors.users">{{ errors.users[0] }}</span>
                 </div>
                 <div class="col-md-6">
                     <role-multiselect
                         @role-selected="roleSelected"
                         @role-removed="removeRole"
                     ></role-multiselect>
+                    <span v-if="errors.roles">{{ errors.roles[0] }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <user-role-listing
+                            :users="users"
+                            :roles="roles"
+                            @remove-user="removeUser"
+                            @remove-role="removeRole"
+                    ></user-role-listing>
                 </div>
             </div>
 
             <div class="footer">
-                <user-role-listing
-                        :users="users"
-                        :roles="roles"
-                        @remove-user="removeUser"
-                        @remove-role="removeRole"
-                ></user-role-listing>
+                <button
+                        type="button"
+                        @click="submit"
+                        class="btn btn-primary">
+                    Save
+                </button>
             </div>
         </div>
     </div>
@@ -40,9 +52,12 @@
 
 <script>
     import UserRoleListing from "./UserRoleListing";
+    import axios from 'axios';
+
     export default {
         components: {UserRoleListing},
         data: () => ({
+            errors: []
         }),
         computed: {
             users() {
@@ -53,6 +68,45 @@
             }
         },
         methods: {
+            submit() {
+                this.errors = []
+
+                // TODO resource replacement
+                axios.post(`/api/users-roles/associate`, {
+                    users: this.users,
+                    roles: this.roles
+                })
+                    .then(res => this.onSuccess(res))
+                    .catch(res => this.onError(res))
+
+                // TODO error handling
+            },
+            // TODO mixin
+            onError(res) {
+                if (res.response.hasOwnProperty('data')) {
+                    this.errors = res.response.data
+                }
+
+                $.notify({
+                    icon: 'ti-check',
+                    message: 'Could not complete the operation'
+
+                },{
+                    type: 'danger',
+                    timer: 3000
+                });
+            },
+            // TODO mixins
+            onSuccess(res) {
+                $.notify({
+                    icon: 'ti-check',
+                    message: 'Operation successfully completed'
+
+                },{
+                    type: 'success',
+                    timer: 3000
+                });
+            },
             removeUser(user) {
                 this.$store.commit('removeUser', user)
             },
@@ -66,5 +120,6 @@
                 this.$store.commit('addRole', option)
             }
         },
+
     }
 </script>
