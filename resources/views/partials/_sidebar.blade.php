@@ -55,14 +55,25 @@
             <li class="active">
         @else
             <li>
-                @endif
+        @endif
                 <a href="{{ route('admin.users.permissions.index') }}">
                     <i class="ti-unlink"></i>
                     <p>Permissions</p>
                 </a>
             </li>
 
-        </ul>
+        {{-- User(s)-Role(s) --}}
+        @if (Route::is('admin.users-roles.associate'))
+            <li class="active">
+        @else
+            <li>
+        @endif
+                <a href="{{ route('admin.users-roles.associate') }}">
+                    <i class="ti-unlink"></i>
+                    <p>User(s)-Role(s)</p>
+                </a>
+            </li>
 
+        </ul>
     </div>
 </div>
