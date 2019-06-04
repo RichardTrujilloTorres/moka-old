@@ -17,23 +17,10 @@
                     <input class="form-control" style="btn btn-primary" type="search" id="search" name="search">
                 </li>
 
-                {{--
-                <li>
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="ti-panel"></i>
-                        <p>Stats</p>
-                    </a>
-                </li>
-                --}}
-                <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="ti-bell"></i>
-                            <p class="notification">5</p>
-                            <p>Notifications</p>
-                            <b class="caret"></b>
-                      </a>
-                    <notification-listing></notification-listing>
-                </li>
+                <!-- notifications -->
+                <notification-listing></notification-listing>
+
+                <!-- settings -->
                 <li>
                     <a href="#">
                         <i class="ti-settings"></i>
