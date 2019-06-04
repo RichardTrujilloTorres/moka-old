@@ -1,11 +1,19 @@
 <template>
-    <ul class="dropdown-menu">
-        <li v-if="!hasUnreadNotifications"><a href="#">You have no notifications.</a></li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="ti-bell"></i>
+            <p class="notification">{{ unreadNotifications.length ? unreadNotifications.length : '' }}</p>
+            <p>Notifications</p>
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li v-if="!hasUnreadNotifications"><a href="#">You have no notifications.</a></li>
 
-        <li v-if="hasUnreadNotifications" v-for="notification in unreadNotifications">
-            <a :href="notificationUrl(notification.id)">{{ notification.data.text }}</a>
-        </li>
-    </ul>
+            <li v-if="hasUnreadNotifications" v-for="notification in unreadNotifications">
+                <a :href="notificationUrl(notification.id)">{{ notification.data.text }}</a>
+            </li>
+        </ul>
+    </li>
 </template>
 
 <script>
