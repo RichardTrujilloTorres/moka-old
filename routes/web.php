@@ -47,6 +47,8 @@ Route::group([
     // Dashboard
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
+    Route::get('user-roles/associate', 'UsersRolesController@associate')->name('users-roles.associate');
+
     /**
      * Users
      */
