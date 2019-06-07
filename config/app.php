@@ -169,9 +169,8 @@ return [
          */
         Spatie\Permission\PermissionServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Spatie\Activitylog\ActivitylogServiceProvider::class,
 
-            
+
 
         /*
          * Application Service Providers...
