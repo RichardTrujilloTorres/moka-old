@@ -27,7 +27,11 @@
             </li>
 
         {{-- Users --}}
-        @if (Route::is('admin.users.*') && !Route::is('admin.users.roles.*') && !Route::is('admin.users.permissions.*'))
+        @if (Route::is('admin.users.*') &&
+            !Route::is('admin.users.roles.*') &&
+            !Route::is('admin.users.permissions.*') &&
+            !Route::is('admin.users.notifications.*')
+            )
             <li class="active">
         @else
             <li>
@@ -73,6 +77,20 @@
                     <p>User(s)-Role(s)</p>
                 </a>
             </li>
+
+        {{-- Notifications --}}
+        @if (Route::is('admin.users.notifications.*'))
+            <li class="active">
+        @else
+            <li>
+        @endif
+                <a href="{{ route('admin.users.notifications.index') }}">
+                    <i class="ti-unlink"></i>
+                    <p>Notifications</p>
+                </a>
+            </li>
+
+
 
         </ul>
     </div>
