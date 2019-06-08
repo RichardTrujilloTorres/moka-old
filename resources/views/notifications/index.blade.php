@@ -39,6 +39,7 @@ Notifications
                                 </a>
 
                                 {{-- mark as read --}}
+                                @empty($notification->read_at)
                                 <a href="{{ route('admin.users.notifications.mark-as-read', $notification->id) }}"
                                    onclick="event.preventDefault();
                                            document.getElementById('mark-as-read-notification-form-{{ $notification->id }}').submit();">
@@ -48,10 +49,12 @@ Notifications
                                 <form id="mark-as-read-notification-form-{{ $notification->id }}"
                                       name="mark-as-read-notification-form-{{ $notification->id }}"
                                       action="{{ route('admin.users.notifications.mark-as-read', $notification->id) }}"
-                                      method="POST" style="display:none;">
+                                      method="POST" style="display:none;"
+                                >
                                     {{ csrf_field() }}
                                     {{ method_field('PUT') }}
                                 </form>
+                                @endempty
 
                                 {{-- remove --}}
                                 <a href="{{ route('admin.users.notifications.destroy', $notification->id) }}"
