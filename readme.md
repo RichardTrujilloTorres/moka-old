@@ -2,6 +2,7 @@
 # Moka
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/RickyNRoses87/moka/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/RickyNRoses87/moka/?branch=master)
+[![Build Status](https://travis-ci.org/RichardTrujilloTorres/moka.svg?branch=master)](https://travis-ci.org/RichardTrujilloTorres/moka)
 
 ## About
 A full-fledged, out-of-the-box, administration panel.
